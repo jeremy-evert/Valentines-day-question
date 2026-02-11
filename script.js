@@ -72,9 +72,30 @@ function displayCatHeart() {
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);
         // Hide the options container
-        document.getElementById('options').style.display = 'none';
+        // Swap buttons: hide Yes/No, show Back
+        document.getElementById('yes-button').style.display = 'none';
+        document.getElementById('no-button').style.display = 'none';
+        document.getElementById('back-button').style.display = 'inline-block';
+
     };
 }
+
+function goBack() {
+    // Restore question + buttons
+    document.getElementById('question').style.display = '';
+    document.getElementById('yes-button').style.display = '';
+    document.getElementById('no-button').style.display = '';
+    document.getElementById('back-button').style.display = 'none';
+
+    // Reset No button text + Yes font size
+    document.getElementById('no-button').innerText = 'No';
+    document.getElementById('yes-button').style.fontSize = '';
+
+    // Restore original cat image
+    document.getElementById('image-container').innerHTML = '';
+    displayCat();
+}
+
 
 // Display the cat.gif initially
 displayCat();
